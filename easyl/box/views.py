@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.contrib.auth.models import Group, User
+from django.contrib.auth.models import User
 from box.serializers import UserSerializer
 from rest_framework import permissions, viewsets
 
