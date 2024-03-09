@@ -11,7 +11,7 @@ class Client(models.Model):
     email = models.EmailField()
     language = models.CharField(default="ua")
     country = models.CharField(default="Україна")
-    code_warification = models.lIntegerField(default=0)
+    code_warification = models.IntegerField(default=0)
 
     def __str__(self) -> str:
         return self.name_tg
