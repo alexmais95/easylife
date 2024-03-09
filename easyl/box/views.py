@@ -36,6 +36,14 @@ class UserBoxlist(generics.ListAPIView):
     serializer_class = BoxSerializer
     filter_backends = (DjangoFilterBackend,)
     filterset_fields = ['user']
+
+
+class OperationVievList(generics.ListAPIView):
+    queryset = Operation.objects.all()
+    serializer_class = OperationSerializer
+    filter_backends = (DjangoFilterBackend,)
+    filterset_fields = ['id_by_tg']
+
     
    
    

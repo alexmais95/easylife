@@ -23,4 +23,9 @@ class BoxSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
+class OperationSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Operation
+        fields = '__all__'
+
 

@@ -28,7 +28,7 @@ class Box(models.Model):
     summ_now = models.IntegerField()
     distrybushim_now = models.CharField()
     status = models.CharField()
-    user = models.ManyToManyField('Client', verbose_name='Клієнт', related_name='box_user')
+    user = models.ManyToManyField('Client', verbose_name='Клієнт', related_name='user_box')
 
     def __str__(self) -> str:
         return self.name

@@ -4,4 +4,5 @@ pip==22.0.2
 django-dotenv==1.4.2
 djangorestframework==3.14.0
 djangorestswagger==2.2.0
+django-filter==23.5
 pyyaml==6.0.1
