@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'languages',
     'django_countries',
     'rest_framework',
+    'django_filters',
     'rest_framework_swagger',
     'box',
 ]
@@ -144,7 +145,7 @@ STATIC_ROOT = "/home/alexmais/pythonProd/easylife/static/"
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 REST_FRAMEWORK = {
-    
+    'DEFAULT_FILTER_BACKENDS': ['django_filters.rest_framework.DjangoFilterBackend'],
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
     'PAGE_SIZE': 10
 }

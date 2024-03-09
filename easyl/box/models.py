@@ -19,15 +19,16 @@ class Client(models.Model):
         return self.name_tg
 
 class Box(models.Model):
-    id_box = models.BigAutoField(primary_key=True)
+    id_box = models.IntegerField(primary_key=True)
     name = models.CharField(max_length=255)
     description = models.TextField()
-    summ = models.DecimalField(max_digits=6, decimal_places=2)
+    summ = models.IntegerField()
     choice = models.IntegerField()
     type_distrybushin = models.CharField()
-    summ_now = models.CharField()
+    summ_now = models.IntegerField()
     distrybushim_now = models.CharField()
-    status = models.BooleanField()
+    status = models.CharField()
+    user = models.ManyToManyField('Client', verbose_name='Клієнт', related_name='box_user')
 
     def __str__(self) -> str:
         return self.name

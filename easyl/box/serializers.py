@@ -17,15 +17,10 @@ class ClientSerializer(serializers.Serializer):
     def create(self, validated_data):
         return Client.objects.create(**validated_data)
 
-
 class BoxSerializer(serializers.ModelSerializer):
-    id_box = serializers.IntegerField
-    name = serializers.CharField()
-    description = serializers.DictField()
-    summ = serializers.DecimalField(max_digits=6, decimal_places=2)
-    choice = serializers.IntegerField()
-    type_distrybushin = serializers.CharField()
-    summ_now = serializers.CharField()
-    distrybushim_now = serializers.CharField()
-    status = serializers.BooleanField(default=True)
+    class Meta:
+        model = Box
+        fields = '__all__'
+
+
 

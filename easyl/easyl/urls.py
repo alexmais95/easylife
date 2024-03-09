@@ -10,8 +10,7 @@ from django.conf import settings
 from box.views import *
 
 router = routers.DefaultRouter()
-
-
+router.register(r'box', BoxViewSet, basename='box')
 
 
 urlpatterns = [
@@ -25,8 +24,12 @@ urlpatterns = [
         name='swagger-ui'),
     path('api-auth/', include('rest_framework.urls')),
     path('admin/', admin.site.urls),
+    path('api/v1/', include(router.urls)),
     path('api/v1/client/', ClientApiView.as_view(), name='add_client' ),
     path('api/v1/client/<int:pk>', ClientApiView.as_view(), name='client' ),
+    path('userbox/', UserBoxlist.as_view())
+    #path('api/v1/userbox/<int:pk>', UserBoxApiView.as_view(), name='client_box' ),
+    
     
     
 ]+ static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
