@@ -1,4 +1,3 @@
-from django.contrib.auth.models import User
 from rest_framework import serializers
 from box.models import *
 
@@ -28,4 +27,7 @@ class OperationSerializer(serializers.ModelSerializer):
         model = Operation
         fields = '__all__'
 
-
+class CoinSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Coin
+        fields = ['numb_coin']

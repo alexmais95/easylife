@@ -27,8 +27,9 @@ urlpatterns = [
     path('api/v1/', include(router.urls)),
     path('api/v1/client/', ClientApiView.as_view(), name='add_client' ),
     path('api/v1/client/<int:pk>', ClientApiView.as_view(), name='client' ),
-    path('userbox/', UserBoxlist.as_view()),
-    path('operation/', OperationVievList.as_view())
+    path('api/v1/userbox/', UserBoxlist.as_view(), name='user_box'),
+    path('api/v1/operation/', OperationVievList.as_view(), name='operation'),
+    path('api/v1/coin/', CoinVievList.as_view(), name='coin')
     
     
     
