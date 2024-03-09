@@ -1,0 +1,8 @@
+- Всі залежності знаходяться в файлі req.txt
+
+- данні юзера по id ('api/v1/client/<int:pk>'), реалізується через APIView.
+- Пост запит теж через APIView(перевіряв через Postman) ('api/v1/client/')
+- інф про бокси, інф. через id, put запит реалізував через ModelSerializer and ModelViewSet ('api/v1/box/')
+- список та вміст доступних узеру боксів(api/v1/userbox/?user=<id_user>/)
+- список операцій юзера (api/v1/operation/?id_by_tg=/)
+- кількість монет юзера(api/v1/coin/?user=/)
