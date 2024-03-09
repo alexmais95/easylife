@@ -13,6 +13,7 @@ router = routers.DefaultRouter()
 
 
 
+
 urlpatterns = [
     path('api_schema/', get_schema_view(
         title='API Schema', 
@@ -24,7 +25,8 @@ urlpatterns = [
         name='swagger-ui'),
     path('api-auth/', include('rest_framework.urls')),
     path('admin/', admin.site.urls),
-    path('api/v1/client/<int:pk>', client_list),
+    path('api/v1/client/', ClientApiView.as_view(), name='add_client' ),
+    path('api/v1/client/<int:pk>', ClientApiView.as_view(), name='client' ),
     
     
 ]+ static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
