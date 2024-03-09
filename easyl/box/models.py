@@ -5,15 +5,18 @@ from django_countries.fields import CountryField
 
 
 
-class User(models.Model):
+class Client(models.Model):
     id_by_tg = models.IntegerField(primary_key=True)
     name_tg = models.CharField(max_length=255)
     name = models.CharField(max_length=255)
-    phone_number = PhoneField(blank=True)
+    phone_number = models.IntegerField()
     email = models.EmailField()
     language = models.CharField()
-    country = CountryField()
+    country = models.CharField()
     code_warification = models.IntegerField()
+
+    def __str__(self) -> str:
+        return self.name_tg
 
 class Box(models.Model):
     id_box = models.BigAutoField(primary_key=True)
@@ -26,13 +29,17 @@ class Box(models.Model):
     distrybushim_now = models.CharField()
     status = models.BooleanField()
 
+    def __str__(self) -> str:
+        return self.name
+
+
 class UserBox(models.Model):
-    id_by_tg = models.ForeignKey('User', on_delete=models.CASCADE)
+    id_by_tg = models.ForeignKey('Client', on_delete=models.CASCADE)
     id_box = models.ForeignKey('Box', on_delete=models.CASCADE)
     
 
 class Operation(models.Model):
-    id_by_tg = models.ForeignKey('User', on_delete=models.CASCADE)
+    id_by_tg = models.ForeignKey('Client', on_delete=models.CASCADE)
     id_box = models.ForeignKey('Box', on_delete=models.CASCADE)
     summ = models.DecimalField(max_digits=6, decimal_places=2)
     nom_operation = models.IntegerField()
@@ -40,7 +47,7 @@ class Operation(models.Model):
     status =  models.CharField()
 
 class Balance(models.Model):
-    id_user = models.ForeignKey('User', on_delete=models.CASCADE)
+    id_user = models.ForeignKey('Client', on_delete=models.CASCADE)
     id_coin = models.ForeignKey('Coin', on_delete=models.CASCADE)
 
 class Coin(models.Model):
@@ -50,12 +57,16 @@ class Coin(models.Model):
     numb_coin = models.IntegerField()
     status =  models.CharField()
 
+    def __str__(self) -> str:
+        return self.name
+
+
 class News(models.Model):
     id_news = models.BigAutoField(primary_key=True)
     text = models.TextField()
 
 class MassageUser(models.Model):
-    id_user = models.ForeignKey('User', on_delete=models.CASCADE)
+    id_user = models.ForeignKey('Client', on_delete=models.CASCADE)
     id_news = models.ForeignKey('News', on_delete=models.CASCADE)
     date = models.DateField()
 

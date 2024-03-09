@@ -6,10 +6,12 @@ from django.views.generic import TemplateView
 from django.conf.urls.static import static
 from django.conf import settings
 
+
 from box.views import *
 
 router = routers.DefaultRouter()
-router.register(r'users', UserViewSet)
+
+
 
 urlpatterns = [
     path('api_schema/', get_schema_view(
@@ -22,8 +24,11 @@ urlpatterns = [
         name='swagger-ui'),
     path('api-auth/', include('rest_framework.urls')),
     path('admin/', admin.site.urls),
-    path('box/', include('box.urls'))
+    path('api/v1/client/<int:pk>', client_list),
+    
+    
 ]+ static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
-urlpatterns += router.urls
+
+
 
 
